@@ -11,7 +11,8 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
+            //$table->string('email'); // Seria melhor um unique para evitar enviar emails para o mesmo destinatário
+            $table->string('email')->unique();
             $table->enum('status', ['active', 'unsubscribed'])->default('active');
             $table->timestamps();
         });

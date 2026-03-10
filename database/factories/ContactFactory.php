@@ -17,4 +17,9 @@ class ContactFactory extends Factory
             'status' => fake()->randomElement(['active', 'active', 'active', 'unsubscribed']),
         ];
     }
+
+    public function unsubscribed(): static
+    {
+        return $this->state(['status' => 'unsubscribed']);
+    }
 }

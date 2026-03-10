@@ -20,4 +20,19 @@ class CampaignFactory extends Factory
             'scheduled_at'    => fake()->optional(0.6)->dateTimeBetween('now', '+30 days'),
         ];
     }
+
+    public function scheduled(): static
+    {
+        return $this->state(['scheduled_at' => now()->addHour()]);
+    }
+
+    public function sending(): static
+    {
+        return $this->state(['status' => 'sending']);
+    }
+
+    public function sent(): static
+    {
+        return $this->state(['status' => 'sent']);
+    }
 }

@@ -19,4 +19,20 @@ class CampaignSendFactory extends Factory
             'status'      => fake()->randomElement(['pending', 'sent', 'failed']),
         ];
     }
+
+    public function sent(): static
+    {
+        return $this->state([
+            'status'  => 'sent',
+            'sent_at' => now(),
+        ]);
+    }
+
+    public function failed(): static
+    {
+        return $this->state([
+            'status'        => 'failed',
+            'error_message' => 'SMTP connection refused.',
+        ]);
+    }
 }

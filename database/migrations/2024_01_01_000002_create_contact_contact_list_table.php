@@ -13,6 +13,8 @@ return new class extends Migration
             $table->foreignId('contact_id')->constrained();
             $table->foreignId('contact_list_id')->constrained();
             $table->timestamps();
+            // Evitar envios duplicados
+            $table->unique(['contact_id', 'contact_list_id']);
         });
     }
 

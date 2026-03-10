@@ -14,7 +14,11 @@ return new class extends Migration
             $table->foreignId('contact_id')->constrained();
             $table->enum('status', ['pending', 'sent', 'failed'])->default('pending');
             $table->text('error_message')->nullable();
+            $table->timestamp('sent_at')->nullable();
             $table->timestamps();
+            // Evitar envios duplicados
+            $table->unique(['campaign_id', 'contact_id']);
+            $table->index('status');
         });
     }
 

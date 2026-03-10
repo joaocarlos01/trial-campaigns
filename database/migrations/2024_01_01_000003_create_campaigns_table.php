@@ -14,7 +14,8 @@ return new class extends Migration
             $table->text('body');
             $table->foreignId('contact_list_id')->constrained();
             $table->enum('status', ['draft', 'sending', 'sent'])->default('draft');
-            $table->string('scheduled_at')->nullable();
+            // $table->string('scheduled_at')->nullable(); // Deveria ser timestamp
+            $table->timestamp('scheduled_at')->nullable()->index();
             $table->timestamps();
         });
     }
